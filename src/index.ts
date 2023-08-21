@@ -1,4 +1,7 @@
 import {NUM} from "./module.js";
+// import fetch from "node-fetch";
+// const fetch = require("node-fetch");
+// import fetch from "node-fetch";
 
 console.log("number", NUM)
 
@@ -113,18 +116,29 @@ interface INewPost {
 // function normalizeData<T, R>(a: T extends string, b: R): { byId: T } & { allIds: R } {
 function normalizeData(value: IPost[]): any {
     let x = value.map(e => e.id);
-    // return value.forEach(post => {
        return Object.assign( {byId: value} as Object, {allIds: x})
-    // });
 }
 console.log(normalizeData(posts));
-/**
- * {
- *    byId: {
- *      62e69d5a5458aac0ed320b35: { id: '...', title: '...', body: '...' },
- *      62e69d5a5458aac0ed320b1c: { id: '...', title: '...', body: '...' },
- *      ...
- *    },
- *    allIds: ['62e69d5a5458aac0ed320b35', '62e69d5a5458aac0ed320b1c', ...]
- * }
- */
+
+
+const COMMENTS_URL = 'https://jsonplaceholder.typicode.com/comments';
+
+interface IDataURL {
+    postId: number,
+    id: number,
+    name: string,
+    email: string,
+    body: string
+}
+
+const getData = async function (url: string): Promise<IDataURL[]> {
+   return await (await fetch(url)).json()
+}
+
+getData(COMMENTS_URL)
+    .then(data => {
+        console.log(data)
+        data.forEach((item: IDataURL) => {
+            console.log( `ID:  ${item.id}`, `Email: ${item.email}`)
+        });
+    });

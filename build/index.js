@@ -71,4 +71,15 @@ function normalizeData(value) {
     return Object.assign({ byId: value }, { allIds: x });
 }
 console.log(normalizeData(posts));
+const COMMENTS_URL = 'https://jsonplaceholder.typicode.com/comments';
+const getData = async function (url) {
+    return await (await fetch(url)).json();
+};
+getData(COMMENTS_URL)
+    .then(data => {
+    console.log(data);
+    data.forEach((item) => {
+        console.log(`ID:  ${item.id}`, `Email: ${item.id}`);
+    });
+});
 //# sourceMappingURL=index.js.map
