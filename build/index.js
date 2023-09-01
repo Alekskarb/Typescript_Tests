@@ -4,8 +4,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { NUM } from "./module.js";
-console.log("number", NUM);
 const user = {};
 function decorator(_) {
     return function (target, key) {
@@ -79,7 +77,8 @@ getData(COMMENTS_URL)
     .then(data => {
     console.log(data);
     data.forEach((item) => {
-        console.log(`ID:  ${item.id}`, `Email: ${item.id}`);
+        console.log(`ID:  ${item.id}`, `Email: ${item.email}`);
     });
 });
+export {};
 //# sourceMappingURL=index.js.map

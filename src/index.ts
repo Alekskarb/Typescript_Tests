@@ -1,52 +1,4 @@
-import {NUM} from "./module.js";
-// import fetch from "node-fetch";
-// const fetch = require("node-fetch");
-// import fetch from "node-fetch";
-
-console.log("number", NUM)
-
-// interface IUser {
-//     name: string
-//     age: number
-//     isProgrammer: boolean
-//     address: {
-//         city: string
-//         street: string
-//     }
-// }
-
-// type UserData = Omit<IUser, 'street'>
-// const user: UserData = {address: {city: "", street: "yyy"}, age: 0, isProgrammer: false, name: ""}
-// console.log("omit", user.address.street)
-
-interface IUser {
-    name: string
-    age: number
-    isProgrammer: boolean
-    address: {
-        city: string
-        street: string
-    }
-}
-
-type UserData = Extract<'name', IUser>
-const user: UserData = <never>{}
-
-function decorator(_: string) {
-    return function (target: Object, key: string | symbol) {
-        console.log(target);
-        console.log(key); // <---
-    }
-}
-
-class User {
-    @decorator('Max')
-    name: string
-
-    constructor(name: string) {
-        this.name = name;
-    }
-}
+// ======== 1 Test Typescript ======
 
 interface ILoan {
     price: number,
@@ -64,6 +16,8 @@ const totalPrice = (object: ILoan): number => {
 
 const price = totalPrice({price: 100000, discount: 25, isInstallment: true, months: 12});
 console.log(price);
+
+// ======== 2 Test Typescript ======
 
 interface IPost {
     id: string,
@@ -120,6 +74,7 @@ function normalizeData(value: IPost[]): any {
 }
 console.log(normalizeData(posts));
 
+// ======== 3 Test Typescript ======
 
 const COMMENTS_URL = 'https://jsonplaceholder.typicode.com/comments';
 
